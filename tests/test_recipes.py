@@ -1,6 +1,7 @@
 import pytest
 from src.recipes import Ingredient
 from src.recipes import Recipe
+from src.recipes import ShoppingList
 
 def test_ingredient_creation():
     ingredient = Ingredient("Мука", 500, "г")
@@ -73,3 +74,57 @@ def test_scale_with_bad_ratio():
 def test_recipe_len():
     recipe = Recipe("Тесто", [Ingredient("Мука", 500, "г"), Ingredient("Вода", 300, "мл")])
     assert len(recipe) == 2
+
+
+def test_add_recipe_to_shopping_list():
+    recipe = Recipe("Тесто", [Ingredient("Мука", 500, "г"), Ingredient("Вода", 300, "мл")])
+    list = ShoppingList()
+    list.add_recipe(recipe, 2)
+    result = list.get_list()
+    assert len(result) == 2
+    assert result[0].name == "Вода"
+    assert result[0].quantity == 600.0
+    assert result[1].name == "Мука"
+    assert result[1].quantity == 1000.0
+
+def test_add_recipe_with_bad_portions():
+    recipe = Recipe("Тесто", [Ingredient("Мука", 500, "г")])
+    list = ShoppingList()
+    with pytest.raises(ValueError):
+        list.add_recipe(recipe, 0)
+
+def test_get_list_adds_same_ingredients():
+    recipe1 = Recipe("Пицца", [Ingredient("Мука", 500, "г"), Ingredient("Сыр", 200, "г")])
+    recipe2 = Recipe("Пирог", [Ingredient("Мука", 300, "г"), Ingredient("Клубнички", 4, "шт")])
+    list = ShoppingList()
+    list.add_recipe(recipe1, 1)
+    list.add_recipe(recipe2, 1)
+    result = list.get_list()
+    flour = None
+    for ingredient in result:
+        if ingredient.name == "Мука":
+            flour = ingredient
+    assert flour is not None
+    assert flour.quantity == 800.0
+
+def test_remove_recipe():
+    recipe1 = Recipe("Какао", [Ingredient("Бобы", 500, "г")])
+    recipe2 = Recipe("Кофэ", [Ingredient("Зерно", 2, "шт")])
+    list = ShoppingList()
+    list.add_recipe(recipe1, 1)
+    list.add_recipe(recipe2, 1)
+    list.remove_recipe("Какао")
+    result = list.get_list()
+    assert len(result) == 1
+    assert result[0].name == "Зерно"
+
+def test_add_shopping_lists():
+    recipe1 = Recipe("Какао", [Ingredient("бобы", 500, "г")])
+    recipe2 = Recipe("Кофэ", [Ingredient("Зерно", 2, "шт")])
+    list1 = ShoppingList()
+    list1.add_recipe(recipe1, 1)
+    list2 = ShoppingList()
+    list2.add_recipe(recipe2, 1)
+    result_list = list1 + list2
+    result = result_list.get_list()
+    assert len(result) == 2
