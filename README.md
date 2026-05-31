@@ -6,10 +6,10 @@
 
 В проекте реализованы следующие классы:
 
-* 'Ingredient - класс отдельных продуктов, используемых в рецептах
-* 'Recipe' - рецепт одного блюда
-* 'ShoppingList' - класс-список покупок, включающий в себя ингредиенты одного или нескольких блюд
-* 'DietaryRecipe' - класс, хранящий рецепт с указанием диетической категории блюда
+* `Ingredient` - класс отдельных продуктов, используемых в рецептах
+* `Recipe` - рецепт одного блюда
+* `ShoppingList` - класс-список покупок, включающий в себя ингредиенты одного или нескольких блюд
+* `DietaryRecipe` - класс, хранящий рецепт с указанием диетической категории блюда
 
 ## Возможности Recipe Manager:
 
@@ -26,33 +26,51 @@
 ## Структура проекта:
 
 📦src
+
  ┣ 📂__pycache__
+
  ┃ ┣ 📜__init__.cpython-314.pyc
+
  ┃ ┗ 📜recipes.cpython-314.pyc
+
  ┣ 📜__init__.py
+
  ┗ 📜recipes.py
+
  📦tests
+
  ┣ 📂__pycache__
+
  ┃ ┣ 📜__init__.cpython-314.pyc
+
  ┃ ┗ 📜test_recipes.cpython-314-pytest-9.0.3.pyc
+
  ┣ 📜__init__.py
+
  ┗ 📜test_recipes.py
+
  .gitignore
+
  README.md
+
  requirements.txt
 
- # Установка
+ ## Установка:
 
  Склонировать репозиторий:
+
 git clone https://github.com/anastesshhaa/Golubtsova_Anastasia_TP_Homework
 
 Перейти в папку проекта:
+
 cd TP_Homework_Golubtsova
 
 Установить зависимости:
+
 pip install -r reqierements.txt
 
 Запустить тесты:
+
 pytest
 
 ## Автор
