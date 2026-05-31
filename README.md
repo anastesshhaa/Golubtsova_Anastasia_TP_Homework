@@ -57,19 +57,19 @@
 
  ## Установка:
 
-*Склонировать репозиторий:*
+**Склонировать репозиторий:**
 
 git clone https://github.com/anastesshhaa/Golubtsova_Anastasia_TP_Homework
 
-*Перейти в папку проекта:*
+**Перейти в папку проекта:**
 
 cd TP_Homework_Golubtsova
 
-*Установить зависимости:*
+**Установить зависимости:**
 
 pip install -r reqierements.txt
 
-*Запустить тесты:*
+**Запустить тесты:**
 
 pytest
 
