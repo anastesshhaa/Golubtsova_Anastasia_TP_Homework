@@ -11,6 +11,8 @@
 * `ShoppingList` - класс-список покупок, включающий в себя ингредиенты одного или нескольких блюд
 * `DietaryRecipe` - класс, хранящий рецепт с указанием диетической категории блюда
 
+В тестах для проверки принадлежности переменной к классу используется функция isinstance() (источник: https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/funktsija-isinstance/) 
+
 ## Возможности Recipe Manager:
 
 * создание ингредиентов
